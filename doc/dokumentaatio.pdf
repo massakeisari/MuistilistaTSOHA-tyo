@@ -1,0 +1,21 @@
+Sovellus on valmiista ehdotuksista löytyvä Muistilista.
+
+Nimensä mukaisesti sovellukseen voi laittaa muistettavia asioita. Asioilla on ominaisuuksina ainakin
+tärkeysaste ja asian kuvaus tai nimi. Asiat pystytään luokittelemaan ryhmiin.
+
+Toimintoja:
+
+    Kirjautuminen
+    Askereen lisäys, muokkaus ja poisto
+    Tärkeysasteen lisäys ja poisto
+    Askareen tärkeyttäminen lisäyksessä tai myöhemmin
+    Luokkien lisäys ja poisto
+    Askareiden luokittelu
+    Luokat voivat olla sisäkkäisiä
+    Yhdellä askareella voi olla monta luokkaa
+
+Sovellus todennäköisesti tulee pyörimään Herokussa, ellei sille ilmaannu jotain estettä, koska koulun
+palvelimiin yhdistäminen tuntuu olevan lähinnä tuurista kiinni.
+Ohjelma kirjoitetaan Javalla, koska epäilen että PHP:n opettelu saattaa viedä liikaa aikaa itse projektin
+tekemiseltä.
+Tietokantana toimii PostgreSQL koska sen pitäisi toimia sekä Herokussa, että koulun serverillä.
