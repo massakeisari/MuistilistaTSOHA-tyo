@@ -19,3 +19,11 @@ palvelimiin yhdistäminen tuntuu olevan lähinnä tuurista kiinni.
 Ohjelma kirjoitetaan Javalla, koska epäilen että PHP:n opettelu saattaa viedä liikaa aikaa itse projektin
 tekemiseltä.
 Tietokantana toimii PostgreSQL koska sen pitäisi toimia sekä Herokussa, että koulun serverillä.
+
+
+
+Käyttäjät: Kirjautumaton käyttäjä, Kirjautunut käyttäjä
+
+    Kirjautumaton käyttäjä on kuka tahansa, kuka avaa sovelluksen. Näkee pelkän kirjautumissivun.
+    
+    Kirjautunut käyttäjä on luonut käyttäjätilin ja näkee listan omista askareistaan.
