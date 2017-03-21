@@ -24,10 +24,7 @@ public class Main {
         database.setDebugMode(true);
         
         get("/", (req, res) -> {
-            HashMap map = new HashMap<>();
-            
-
-            return new ModelAndView(map, "etusivu");
-        }, new ThymeleafTemplateEngine());
+            return "Muistilista";
+        });
     }
 }
