@@ -1,1 +1,1 @@
-web:    java -Dserver.port=$PORT -cp target/classes:target/dependency/* tikape.runko.Main
+web:    java -Dserver.port=$PORT -cp target/classes:target/dependency/* com.mikko.muistilista.Main
