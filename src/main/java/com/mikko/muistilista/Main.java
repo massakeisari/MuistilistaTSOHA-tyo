@@ -28,5 +28,11 @@ public class Main {
             
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
+        
+        get("/lista", (req, res) -> {
+            HashMap map = new HashMap<>();
+            
+            return new ModelAndView(map, "lista");
+        }, new ThymeleafTemplateEngine());
     }
 }
