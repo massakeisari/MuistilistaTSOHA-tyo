@@ -1,0 +1,54 @@
+html {
+    background: -moz-linear-gradient(bottom right, azure, lightgreen) fixed;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    background: -moz-linear-gradient(black, grey);
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+
+li {
+    float: left;
+    border-right: 1px solid gray;
+    padding: 18px, 18px;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: white;
+    color: black;
+}
+
+li a.active {
+    background-color: yellow;
+    color: black;
+}

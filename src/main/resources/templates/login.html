@@ -1,12 +1,11 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
     <head>
-        <title>Muistilistasovellus</title>
-        <meta charset="utf-8" />
+        <title>Kirjaudu sisään</title>
+        <meta charset="UTF-8"/>
         <link rel="stylesheet" type="text/css" href="tyylit.css">
     </head>
-
+    
     <body>
         <ul>
             <li><a href="index.html">Etusivu</a></li>
@@ -14,7 +13,12 @@
             <li style="float:right"><a href="login.html">Kirjaudu</a></li>
         </ul>
         
-        <h1>Muistilista</h1>
-
+        <h2>Kirjaudu sisään</h2>
+        <p>Nimi:</p>
+        <input type="text" name="nimi"><br>
+        <p>Salasana:</p>
+        <input type="password" name="salasana"><br><br>
+        <input type="submit" value="Kirjaudu">
+        
     </body>
 </html>
