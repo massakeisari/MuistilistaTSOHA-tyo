@@ -7,7 +7,9 @@ Yleisiä linkkejä:
 
 HTML-tiedostot:
 
-* [Etusivu]()
+* [Etusivu](https://github.com/massakeisari/MuistilistaTSOHA-tyo/blob/master/src/main/resources/templates/index.html)
+* [Listasivu](https://github.com/massakeisari/MuistilistaTSOHA-tyo/blob/master/src/main/resources/templates/lista.html)
+* [Kirjautumissivu](https://github.com/massakeisari/MuistilistaTSOHA-tyo/blob/master/src/main/resources/templates/login.html)
 
 ## Työn aihe
 
