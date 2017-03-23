@@ -51,7 +51,7 @@
             }
 
             li a {
-                display: block;
+                display: inline-block;
                 color: white;
                 text-align: center;
                 text-decoration: none;
@@ -79,6 +79,24 @@
                 background-color: black;
                 color: white;
             }
+            
+            #poista {
+                background-color: #f44336;
+                border: none;
+                color: white;
+                padding: 10px, 14px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            
+            #muokkaa {
+                background-color: #008CBA;
+                border: none;
+                color: white;
+                padding: 10px, 14px;
+                text-decoration: none;
+                display: inline-block;
+            }
         </style>
 
     </head>
@@ -99,6 +117,8 @@
     </ul>
     
     <p>Tässä on valitun tehtävän yksityiskohtia tai tarkempi kuvaus</p>
+    <button id="muokkaa">Muokkaa</button>
+    <button id="poista">Poista</button>
     
     <footer>TSOHA-muistilista</footer>
 </html>
