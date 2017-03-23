@@ -3,7 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://tsoha-muistilista.herokuapp.com/)
-* [Linkki dokumentaatiooni](https://github.com/massakeisari/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+* [Linkki dokumentaatiooni](https://github.com/massakeisari/MuistilistaTSOHA-tyo/blob/master/doc/dokumentaatio.pdf)
 
 HTML-tiedostot:
 
