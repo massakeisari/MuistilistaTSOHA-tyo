@@ -3,70 +3,102 @@
     <head>
         <title>Muistilista</title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" media="all" href="tyylit.css"/>
         <style>
             html {
-    background: -moz-linear-gradient(bottom right, azure, lightgreen) fixed;
-}
+                background: -moz-linear-gradient(bottom right, azure, lightgreen) fixed;
+            }
 
-body {
-    margin: 0;
-}
+            body {
+                margin: 0;
+            }
 
-h1 {
-    text-align: center;
-}
+            h1 {
+                text-align: center;
+            }
 
-nav {
-    background: -moz-linear-gradient(black, grey);
-    color: white;
-}
+            nav {
+                background: -moz-linear-gradient(black, grey);
+                color: white;
+            }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: black;
-}
+            .lista {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                background-color: antiquewhite;
+                color: darkolivegreen;
+            }
 
-li {
-    float: left;
-    border-right: 1px solid gray;
-    padding: 18px, 18px;
-}
+            #navi {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background-color: black;
+            }
 
-li:last-child {
-    border-right: none;
-}
+            #navili {
+                float: left;
+                border-right: 1px solid gray;
+                padding: 18px, 18px;
+            }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-}
+            li:last-child {
+                border-right: none;
+            }
 
-li a:hover {
-    background-color: white;
-    color: black;
-}
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+            }
 
-li a.active {
-    background-color: yellow;
-    color: black;
-}
+            li a:hover {
+                background-color: white;
+                color: black;
+            }
+
+            li a.active {
+                background-color: yellow;
+                color: black;
+            }
+
+            p {
+                background-color: white;
+            }
+
+            footer {
+                bottom: 0;
+                position: fixed;
+                text-align: center;
+                width: 100%;
+                background-color: black;
+                color: white;
+            }
         </style>
 
     </head>
     
     
-    <ul>
-        <li><a href="/index">Etusivu</a></li>
-        <li><a href="/lista">Muistilista</a></li>
-        <li style="float:right"><a href="/login">Kirjaudu</a></li>
+    <ul id="navi">
+        <li id="navili"><a href="/index">Etusivu</a></li>
+        <li id="navili"><a href="/lista">Muistilista</a></li>
+        <li id="navili" style="float:right"><a href="/login">Kirjaudu</a></li>
     </ul>
+    
+    <ul class="lista">
+        <li>Listan ensimmäinen asia</li>
+        <li>Listan toinen asia</li>
+        <li>Kolmas asia</li>
+        <li>Neljäs</li>
+        <li>Viides</li>
+    </ul>
+    
+    <p>Tässä on valitun tehtävän yksityiskohtia tai tarkempi kuvaus</p>
+    
+    <footer>TSOHA-muistilista</footer>
 </html>
