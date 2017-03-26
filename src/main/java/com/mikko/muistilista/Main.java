@@ -41,10 +41,10 @@ public class Main {
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
         
-        get("/login", (req, res) -> {
+        get("/kirjautuminen", (req, res) -> {
             HashMap map = new HashMap<>();
             
-            return new ModelAndView(map, "login");
+            return new ModelAndView(map, "kirjautuminen");
         }, new ThymeleafTemplateEngine());
     }
 }
