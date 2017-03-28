@@ -16,7 +16,7 @@ public class Main {
             port(Integer.valueOf(System.getenv("PORT")));
         }
         
-        String jdbcOsoite = "jdbc:sqlite:src/main/resources/foorumi.db";
+        String jdbcOsoite = "";
         if (System.getenv("DATABASE_URL") != null) {
             jdbcOsoite = System.getenv("DATABASE_URL");
         } 
