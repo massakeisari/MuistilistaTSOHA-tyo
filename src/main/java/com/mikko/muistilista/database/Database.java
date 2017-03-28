@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,24 @@ public class Database {
 
     public Database(String databaseAddress) throws ClassNotFoundException {
         this.databaseAddress = databaseAddress;
+        
+        init();
+    }
+    
+    private void init() {
+        try(Connection conn = getConnection()) {
+            Statement st = conn.createStatement();
+            
+            System.out.println("Creating Kayttaja table");
+            st.executeUpdate("CREATE TABLE Kayttaja(id SERIAL PRIMARY KEY, nimi varchar(30) NOT NULL, salasana varchar(50) NOT NULL);");
+            System.out.println("Creating Muistettava table");
+            st.executeUpdate("CREATE TABLE Muistettava(id SERIAL PRIMARY KEY, kayttaja_id INTEGER REFERENCES Kayttaja(id), nimi varchar(50) NOT NULL, tehty boolean DEFAULT FALSE, kuvaus varchar(500));");
+            System.out.println("Creating Luokka table");
+            st.executeUpdate("CREATE TABLE Luokka(id SERIAL PRIMARY KEY, muistettava_id INTEGER REFERENCES Muistettava(id), nimi varchar(20));");
+            
+        } catch (Throwable t) {
+            System.out.println("ERROR - " +t.getMessage());
+        }
     }
 
     public void setDebugMode(boolean d) {

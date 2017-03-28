@@ -1,10 +1,10 @@
 package com.mikko.muistilista.database;
 
 
-public class MuistettavaDao {
+public class LuokkaDao {
     private Database db;
     
-    public MuistettavaDao(Database db) {
+    public LuokkaDao(Database db) {
         this.db = db;
     }
 }
