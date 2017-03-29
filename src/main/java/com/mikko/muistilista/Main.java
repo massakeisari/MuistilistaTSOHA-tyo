@@ -6,6 +6,7 @@ import com.mikko.muistilista.database.MuistettavaDao;
 import com.mikko.muistilista.domain.Kayttaja;
 import java.net.URI;
 import java.util.HashMap;
+import javax.servlet.http.HttpSession;
 import spark.ModelAndView;
 import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -74,7 +75,7 @@ public class Main {
                 return "";
             }
             
-            req.session(true).attribute("k", k);
+            req.session(true).attribute("kirj", k);
             res.redirect("/kayttaja/" + k.getId() + "/");
             return "";
         });
@@ -84,6 +85,7 @@ public class Main {
             HashMap map = new HashMap<>();
             map.put("kayttaja", kd.findOne(Integer.parseInt(req.params(":id"))));
             map.put("muistettavat", md.findByKayttajaId(Integer.parseInt(req.params(":id"))));
+            map.put("lisaa", "Lisaa muistettava");
             
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
@@ -110,8 +112,11 @@ public class Main {
         post("/lisaam", (req, res) -> {
             String nimi = req.queryParams("nimi");
             String kuvaus = req.queryParams("kuvaus");
+            md.lisaa(nimi, kuvaus);
             
-            res.redirect("/");
+            Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
+            
+            res.redirect("/kayttaja/" + kirj.getId() + "/");
             return "";
         });
     }

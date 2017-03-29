@@ -16,6 +16,19 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
         this.db = db;
     }
     
+    public void lisaa(String nimi, String kuvaus) throws SQLException{
+        Connection c = db.getConnection();
+        PreparedStatement stmt = c.prepareStatement("INSERT INTO Muistettava(nimi, kuvaus) VALUES"
+                + "(?, ?)");
+        stmt.setString(1, nimi);
+        stmt.setString(2, kuvaus);
+        
+        stmt.execute();
+        
+        stmt.close();
+        c.close();
+    }
+    
     public List<Muistettava> findByKayttajaId(int key) throws SQLException{
         Connection c = db.getConnection();
         PreparedStatement stmt = c.prepareStatement("SELECT * FROM Muistettava WHERE kayttaja_id = ?");
