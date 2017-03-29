@@ -33,30 +33,36 @@ public class Main {
         KayttajaDao kd = new KayttajaDao(database);
         MuistettavaDao md = new MuistettavaDao(database);
         
+        //Etusivu
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
         
+        //Listasivu
         get("/lista", (req, res) -> {
             HashMap map = new HashMap<>();
             
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
         
+        //Etusivu
         get("/index", (req, res) -> {
             HashMap map = new HashMap<>();
             
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
         
+        
+        //Kirjautumissivu
         get("/kirjautuminen", (req, res) -> {
             HashMap map = new HashMap<>();
             
             return new ModelAndView(map, "kirjautuminen");
         }, new ThymeleafTemplateEngine());
         
+        //Kirjautuminen ja listaan redirectaaminen
         post("/login", (req, res) -> {
             String nimi = req.queryParams("nimi");
             String salasana = req.queryParams("salasana");
@@ -73,6 +79,7 @@ public class Main {
             return "";
         });
         
+        //Kirjautuneen käyttäjän oma lista
         get("/kayttaja/:id/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("kayttaja", kd.findOne(Integer.parseInt(req.params(":id"))));
@@ -81,17 +88,30 @@ public class Main {
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
         
+        //Rekisteröintisivu
         get("/rekisterointi", (req, res) -> {
             HashMap map = new HashMap<>();
             return new ModelAndView(map, "rekisterointi");
         }, new ThymeleafTemplateEngine());
         
+        //Rekisteröinti lomakkeella
         post("/rek", (req, res) -> {
             String nimi = req.queryParams("nimi");
             String salasana = req.queryParams("salasana");
             kd.lisaaKayttaja(nimi, salasana);
             
             res.redirect("/kirjautuminen");
+            return "";
+        });
+        
+        
+        
+        //TODO - Muistettavan lisäys tietokantaan lomakkeella
+        post("/lisaam", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            String kuvaus = req.queryParams("kuvaus");
+            
+            res.redirect("/");
             return "";
         });
     }
