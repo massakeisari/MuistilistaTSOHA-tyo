@@ -1,10 +1,12 @@
 package com.mikko.muistilista;
 
 import com.mikko.muistilista.database.Database;
+import com.mikko.muistilista.database.KayttajaDao;
+import com.mikko.muistilista.database.MuistettavaDao;
+import com.mikko.muistilista.domain.Kayttaja;
 import java.util.HashMap;
 import spark.ModelAndView;
-import static spark.Spark.get;
-import static spark.Spark.port;
+import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 
@@ -22,6 +24,8 @@ public class Main {
         } 
         Database database = new Database(jdbcOsoite);
         database.setDebugMode(true);
+        KayttajaDao kd = new KayttajaDao(database);
+        MuistettavaDao md = new MuistettavaDao(database);
         
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -45,6 +49,30 @@ public class Main {
             HashMap map = new HashMap<>();
             
             return new ModelAndView(map, "kirjautuminen");
+        }, new ThymeleafTemplateEngine());
+        
+        post("/login", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            String salasana = req.queryParams("salasana");
+            
+            Kayttaja k = kd.findByNamePass(nimi, salasana);
+            
+            if(k == null) {
+                res.redirect("/kirjautuminen");
+                return "";
+            }
+            
+            req.session(true).attribute("k", k);
+            res.redirect("/kayttaja/" + k.getId() + "/");
+            return "";
+        });
+        
+        get("/kayttaja/:id/", (req, res) -> {
+            HashMap map = new HashMap<>();
+            map.put("kayttaja", kd.findOne(Integer.parseInt(req.params(":id"))));
+            map.put("muistettavat", MuistettavaDao.findByKayttajaId(Integer.parseInt(req.params(":id"))));
+            
+            return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
     }
 }

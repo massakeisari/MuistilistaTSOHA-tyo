@@ -58,7 +58,7 @@
                 background-color: yellow;
                 color: black;
             }
-            
+
             footer {
                 bottom: 0;
                 position: fixed;
@@ -69,21 +69,22 @@
             }
         </style>
     </head>
-    
+
     <body>
         <ul>
             <li><a href="/index">Etusivu</a></li>
             <li><a href="/lista">Muistilista</a></li>
             <li style="float:right"><a href="/kirjautuminen">Kirjaudu</a></li>
         </ul>
-        
+
         <h2>Kirjaudu sisään</h2>
-        <p>Nimi:</p>
-        <input type="text" name="nimi"/><br/>
-        <p>Salasana:</p>
-        <input type="password" name="salasana"/><br/><br/>
-        <input type="submit" value="Kirjaudu"/>
-        
+        <form action="/login" method="POST">
+            <p>Nimi:</p>
+            <input type="text" name="nimi"/><br/>
+            <p>Salasana:</p>
+            <input type="password" name="salasana"/><br/><br/>
+            <input type="submit" value="Kirjaudu"/>
+        </form>
         <footer>TSOHA-muistilista</footer>
     </body>
 </html>

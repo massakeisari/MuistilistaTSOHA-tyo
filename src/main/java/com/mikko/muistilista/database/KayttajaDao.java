@@ -29,6 +29,16 @@ public class KayttajaDao implements Dao<Kayttaja, Integer>{
         conn.close();
     }
     
+    public Kayttaja findByNamePass(String nimi, String password) throws SQLException {
+        KayttajaCollector keraaja = new KayttajaCollector();
+        List<Kayttaja> k = this.db.queryAndCollect("SELECT * FROM Kayttaja"
+                + " WHERE nimi = ? AND salasana = ?", keraaja, nimi, password);
+        if(k.isEmpty()) {
+            return null;
+        }
+        return k.get(0);
+    }
+    
     @Override
     public void delete(Integer key) throws SQLException {
         Connection conn = db.getConnection();
