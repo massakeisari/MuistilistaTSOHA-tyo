@@ -112,9 +112,11 @@ public class Main {
         post("/lisaam", (req, res) -> {
             String nimi = req.queryParams("nimi");
             String kuvaus = req.queryParams("kuvaus");
-            md.lisaa(nimi, kuvaus);
-            
             Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
+            
+            md.lisaa(kirj.getId(), nimi, kuvaus);
+            
+            
             
             res.redirect("/kayttaja/" + kirj.getId() + "/");
             return "";

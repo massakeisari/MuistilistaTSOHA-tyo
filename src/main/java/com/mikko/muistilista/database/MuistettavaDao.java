@@ -16,12 +16,13 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
         this.db = db;
     }
     
-    public void lisaa(String nimi, String kuvaus) throws SQLException{
+    public void lisaa(int kId, String nimi, String kuvaus) throws SQLException{
         Connection c = db.getConnection();
-        PreparedStatement stmt = c.prepareStatement("INSERT INTO Muistettava(nimi, kuvaus) VALUES"
+        PreparedStatement stmt = c.prepareStatement("INSERT INTO Muistettava(kayttaja_id, nimi, kuvaus) VALUES"
                 + "(?, ?)");
-        stmt.setString(1, nimi);
-        stmt.setString(2, kuvaus);
+        stmt.setInt(1, kId);
+        stmt.setString(2, nimi);
+        stmt.setString(3, kuvaus);
         
         stmt.execute();
         
