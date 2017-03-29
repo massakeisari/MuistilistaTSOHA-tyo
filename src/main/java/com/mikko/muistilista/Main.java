@@ -4,6 +4,7 @@ import com.mikko.muistilista.database.Database;
 import com.mikko.muistilista.database.KayttajaDao;
 import com.mikko.muistilista.database.MuistettavaDao;
 import com.mikko.muistilista.domain.Kayttaja;
+import java.net.URI;
 import java.util.HashMap;
 import spark.ModelAndView;
 import static spark.Spark.*;
@@ -19,8 +20,10 @@ public class Main {
         }
         
         String jdbcOsoite = "";
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
         if (System.getenv("DATABASE_URL") != null) {
-            jdbcOsoite = System.getenv("DATABASE_URL");
+            //jdbcOsoite = System.getenv("DATABASE_URL");
+            jdbcOsoite = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
         } 
         Database database = new Database(jdbcOsoite);
         database.setDebugMode(true);
