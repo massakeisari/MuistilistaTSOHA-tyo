@@ -110,7 +110,7 @@
         <li id="navili" style="float:right"><a href="/kirjautuminen">Kirjaudu</a></li>
     </ul>
     
-    <ul class="lista">
+    <ul class="lista" th:each="muistettava : ${muistettavat}">
         <li><a>Listan ensimmäinen asia</a></li>
         <li><a>Listan toinen asia</a></li>
         <li><a>Kolmas asia</a></li>
