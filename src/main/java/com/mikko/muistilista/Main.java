@@ -23,7 +23,10 @@ public class Main {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
         if (System.getenv("DATABASE_URL") != null) {
             //jdbcOsoite = System.getenv("DATABASE_URL");
-            jdbcOsoite = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+            String username = dbUri.getUserInfo().split(":")[0];
+            String password = dbUri.getUserInfo().split(":")[1];
+            jdbcOsoite = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() +
+                    "?user=" + username + "&password=" + password;
         } 
         Database database = new Database(jdbcOsoite);
         database.setDebugMode(true);
