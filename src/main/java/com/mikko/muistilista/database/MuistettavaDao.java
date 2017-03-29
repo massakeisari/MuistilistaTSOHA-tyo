@@ -19,6 +19,7 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
     public List<Muistettava> findByKayttajaId(int key) throws SQLException{
         Connection c = db.getConnection();
         PreparedStatement stmt = c.prepareStatement("SELECT * FROM Muistettava WHERE kayttajaId = ?");
+        stmt.setInt(1, key);
         ResultSet rs = stmt.executeQuery();
         List<Muistettava> m = new ArrayList<>();
         
