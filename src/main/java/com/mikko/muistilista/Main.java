@@ -90,6 +90,8 @@ public class Main {
             String nimi = req.queryParams("nimi");
             String salasana = req.queryParams("salasana");
             kd.lisaaKayttaja(nimi, salasana);
+            
+            res.redirect("/login");
             return "";
         });
     }
