@@ -3,7 +3,10 @@ package com.mikko.muistilista.database;
 import com.mikko.muistilista.domain.Muistettava;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MuistettavaDao implements Dao<Muistettava, Integer>{
@@ -11,6 +14,26 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
     
     public MuistettavaDao(Database db) {
         this.db = db;
+    }
+    
+    public List<Muistettava> findByKayttajaId(int key) throws SQLException{
+        Connection c = db.getConnection();
+        PreparedStatement stmt = c.prepareStatement("SELECT * FROM Muistettava WHERE kayttajaId = ?");
+        ResultSet rs = stmt.executeQuery();
+        List<Muistettava> m = new ArrayList<>();
+        
+        while(rs.next()) {
+            Integer id = rs.getInt("id");
+            Integer kayttajaId = rs.getInt("kayttajaId");
+            String nimi = rs.getString("nimi");
+            String kuvaus = rs.getString("kuvaus");
+            
+            m.add(new Muistettava(id, kayttajaId, nimi, kuvaus));
+        }
+        
+        stmt.close();
+        c.close();
+        return m;
     }
     
     @Override
@@ -21,6 +44,51 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
         stmt.execute();
         stmt.close();
         conn.close();
+    }
+    
+    @Override
+    public List<Muistettava> findAll() throws SQLException {
+        Connection conn = db.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Muistettava");
+        ResultSet rs = stmt.executeQuery();
+        List<Muistettava> muistettavat  = new ArrayList<>();
+        
+        while(rs.next()) {
+            Integer id = rs.getInt("id");
+            Integer kayttajaId = rs.getInt("kayttajaId");
+            String nimi = rs.getString("nimi");
+            String kuvaus = rs.getString("kuvaus");
+            
+
+            muistettavat.add(new Muistettava(id, kayttajaId, nimi, kuvaus));
+        }
+        stmt.close();
+        conn.close();
+        
+        return muistettavat;
+    }
+    
+    @Override
+    public Muistettava findOne(Integer key) throws SQLException {
+        Connection conn = db.getConnection();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Muistettava WHERE id = ?");
+        stmt.setObject(1, key);
+        ResultSet rs = stmt.executeQuery();
+        if(!rs.next()) {
+            return null;
+        }
+        
+        int id = rs.getInt("id");
+        int kayttajaId = rs.getInt("kayttajaId");
+        String nimi = rs.getString("nimi");
+        String kuvaus = rs.getString("kuvaus");
+        
+        Muistettava m = new Muistettava(id, kayttajaId, nimi, kuvaus);
+        
+        rs.close();
+        stmt.close();
+        conn.close();
+        return m;
     }
     
 }

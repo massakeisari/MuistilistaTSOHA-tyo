@@ -70,7 +70,7 @@ public class Main {
         get("/kayttaja/:id/", (req, res) -> {
             HashMap map = new HashMap<>();
             map.put("kayttaja", kd.findOne(Integer.parseInt(req.params(":id"))));
-            map.put("muistettavat", MuistettavaDao.findByKayttajaId(Integer.parseInt(req.params(":id"))));
+            map.put("muistettavat", md.findByKayttajaId(Integer.parseInt(req.params(":id"))));
             
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());

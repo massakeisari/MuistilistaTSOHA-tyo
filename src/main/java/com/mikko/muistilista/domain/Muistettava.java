@@ -7,7 +7,7 @@ public class Muistettava {
     private boolean tehty;
     private String kuvaus;
     
-    public Muistettava(int id, int kayttajaId, String nimi, boolean tehty,
+    public Muistettava(int id, int kayttajaId, String nimi,
             String kuvaus) {
         this.id = id;
         this.kayttajaId = kayttajaId;
