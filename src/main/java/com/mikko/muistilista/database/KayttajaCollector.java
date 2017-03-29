@@ -15,7 +15,6 @@ public class KayttajaCollector implements Collector<Kayttaja> {
     @Override
     public Kayttaja collect(ResultSet rs) throws SQLException {
         Kayttaja k = new Kayttaja(rs.getInt("id"), rs.getString("nimi"), rs.getString("salasana"));
-        rs.close();
         return k;
     }
 }

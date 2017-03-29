@@ -91,7 +91,7 @@ public class Main {
             String salasana = req.queryParams("salasana");
             kd.lisaaKayttaja(nimi, salasana);
             
-            res.redirect("/login");
+            res.redirect("/kirjautuminen");
             return "";
         });
     }
