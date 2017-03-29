@@ -80,5 +80,17 @@ public class Main {
             
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
+        
+        get("/rekisterointi", (req, res) -> {
+            HashMap map = new HashMap<>();
+            return new ModelAndView(map, "rekisterointi");
+        }, new ThymeleafTemplateEngine());
+        
+        post("/rek", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            String salasana = req.queryParams("salasana");
+            kd.lisaaKayttaja(nimi, salasana);
+            return "";
+        });
     }
 }
