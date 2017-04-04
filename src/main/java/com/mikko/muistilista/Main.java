@@ -83,8 +83,9 @@ public class Main {
         //Kirjautuneen käyttäjän oma lista
         get("/kayttaja/:id/", (req, res) -> {
             HashMap map = new HashMap<>();
-            map.put("kayttaja", kd.findOne(Integer.parseInt(req.params(":id"))));
-            map.put("muistettavat", md.findByKayttajaId(Integer.parseInt(req.params(":id"))));
+            int kayttaja = Integer.parseInt(req.params(":id"))+1;
+            map.put("kayttaja", kd.findOne(kayttaja));
+            map.put("muistettavat", md.findByKayttajaId(kayttaja));
             map.put("lisaa", "Lisaa muistettava");
             
             return new ModelAndView(map, "lista");
