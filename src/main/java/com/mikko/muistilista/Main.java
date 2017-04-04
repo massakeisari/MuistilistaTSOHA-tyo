@@ -42,8 +42,11 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         //Listasivu
+        //TODO - jos ei kirjautunut, ohjaa kirjautumissivulle
         get("/lista", (req, res) -> {
             HashMap map = new HashMap<>();
+            
+            
             
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
