@@ -86,7 +86,7 @@ public class Main {
         //Kirjautuneen käyttäjän oma lista
         get("/kayttaja/:id/", (req, res) -> {
             HashMap map = new HashMap<>();
-            int kayttajaid = Integer.parseInt(req.params(":id"));
+            int kayttajaid = Integer.parseInt(req.params(":id"))+1;
             map.put("kayttaja", kd.findOne(kayttajaid).getNimi());
             map.put("muistettavat", md.findByKayttajaId(kayttajaid));
             map.put("lisaa", "Lisaa muistettava");
