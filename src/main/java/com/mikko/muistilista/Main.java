@@ -79,12 +79,12 @@ public class Main {
             }
             
             req.session(true).attribute("kirj", k);
-            res.redirect("/kayttaja/" + k.getId() + "/");
+            res.redirect("/kayttaja/" + k.getId());
             return "";
         });
         
         //Kirjautuneen käyttäjän oma lista
-        get("/kayttaja/:id/", (req, res) -> {
+        get("/kayttaja/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             int kayttajaid = Integer.parseInt(req.params(":id"))+1;
             Kayttaja k = kd.findOne(kayttajaid);
