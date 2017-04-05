@@ -87,7 +87,9 @@ public class Main {
         get("/kayttaja/:id/", (req, res) -> {
             HashMap map = new HashMap<>();
             int kayttajaid = Integer.parseInt(req.params(":id"))+1;
-            map.put("kayttaja", kd.findOne(kayttajaid).getNimi());
+            Kayttaja k = kd.findOne(kayttajaid);
+            System.out.println(k.toString());
+            map.put("kayttaja", k.getNimi());
             map.put("muistettavat", md.findByKayttajaId(kayttajaid));
             map.put("lisaa", "Lisaa muistettava");
             

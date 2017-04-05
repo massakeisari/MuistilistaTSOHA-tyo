@@ -110,7 +110,10 @@
             <li style="float:right"><a href="/kirjautuminen">Kirjaudu</a></li>
         </ul>
 
-        <h2 th:text="${kayttaja}">Kayttajan nimi tähän</h2>
+        <div>
+            <h2 th:text="${kayttaja}">Kayttajan nimi tähän</h2>
+        </div>
+        
 
         <ul class="lista" th:each="muistettava : ${muistettavat}">
             <li><a>Listan ensimmäinen asia</a></li>

@@ -21,4 +21,9 @@ public class Kayttaja {
     public String getSalasana() {
         return this.salasana;
     }
+    
+    @Override
+    public String toString() {
+        return this.id + " " + this.nimi;
+    }
 }
