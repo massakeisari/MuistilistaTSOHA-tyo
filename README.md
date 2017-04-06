@@ -3,6 +3,7 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://tsoha-muistilista.herokuapp.com/)
+Testitunnukset: tunnus: mikko   salasana: mikko1
 * [Linkki dokumentaatiooni](https://github.com/massakeisari/MuistilistaTSOHA-tyo/blob/master/doc/dokumentaatio.pdf)
 
 HTML-tiedostot:
