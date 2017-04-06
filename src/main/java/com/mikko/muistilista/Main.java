@@ -50,6 +50,8 @@ public class Main {
             
             if(k == null) {
                 res.redirect("/kirjautuminen");
+            } else {
+                res.redirect("/kayttaja/" + k.getId());
             }
             
             return new ModelAndView(map, "lista");
