@@ -124,7 +124,17 @@ public class Main {
             
             
             
-            res.redirect("/kayttaja/" + kirj.getId() + "/");
+            res.redirect("/kayttaja/" + kirj.getId());
+            return "";
+        });
+        
+        //Muistettavan "Poista" -napille
+        post("/poista", (req, res) -> {
+            int mId = Integer.parseInt(req.queryParams("id"));
+            md.delete(mId);
+            
+            Kayttaja k = (Kayttaja)req.session().attribute("kirj");
+            res.redirect("/kayttaja/" + k.getId());
             return "";
         });
     }
