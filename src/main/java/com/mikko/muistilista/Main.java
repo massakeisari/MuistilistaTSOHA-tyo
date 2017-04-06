@@ -46,7 +46,11 @@ public class Main {
         get("/lista", (req, res) -> {
             HashMap map = new HashMap<>();
             
+            Kayttaja k = (Kayttaja)req.session().attribute("kirj");
             
+            if(k == null) {
+                res.redirect("/kirjautuminen");
+            }
             
             return new ModelAndView(map, "lista");
         }, new ThymeleafTemplateEngine());
@@ -128,7 +132,7 @@ public class Main {
             return "";
         });
         
-        //Muistettavan "Poista" -napille
+        //Muistettavan "Poista" -napille ei valmis
         post("/poista", (req, res) -> {
             int mId = Integer.parseInt(req.queryParams("id"));
             md.delete(mId);
