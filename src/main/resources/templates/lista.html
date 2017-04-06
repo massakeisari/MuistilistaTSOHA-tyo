@@ -16,13 +16,16 @@
         </ul>
         
 
-        <ul class="lista" th:each="muistettava : ${muistettavat}">
-            <li><a>Listan ensimmäinen asia</a></li>
-            <li><a>Listan toinen asia</a></li>
-            <li><a>Kolmas asia</a></li>
-            <li><a>Neljäs</a></li>
-            <li><a>Viides</a></li>
-        </ul>
+        <table>
+            <tr>
+                <td>Ensimmäinen muistettava asia</td>
+                <td><form action="/poista" method="POST"></form></td>
+            </tr>
+            <tr>
+                <td>Toinen muistettava asia</td>
+                <td><form action="/poista" method="POST"></form></td>
+            </tr>
+        </table>
 
         <p style="float:left">Tässä on valitun tehtävän yksityiskohtia tai tarkempi kuvaus</p>
         <button id="muokkaa">Muokkaa</button>
