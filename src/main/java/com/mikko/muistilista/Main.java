@@ -116,11 +116,13 @@ public class Main {
             String nimi = req.queryParams("nimi");
             if (!tark.tarkastaNimi(nimi)) {
                 res.redirect("/virhe/" + "1");
+                return "";
             }
 
             String salasana = req.queryParams("salasana");
             if (!tark.tarkastaNimi(nimi)) {
                 res.redirect("/virhe/" + "2");
+                return "";
             }
 
             kd.lisaaKayttaja(nimi, salasana);
@@ -137,6 +139,7 @@ public class Main {
             Kayttaja kirj = (Kayttaja) req.session().attribute("kirj");
             if (!tark.tarkastaMuistettava(nimi)) {
                 res.redirect("/virhe/" + "3");
+                return "";
             }
             String kuvaus = req.queryParams("kuvaus");
 
