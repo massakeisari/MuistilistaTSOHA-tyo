@@ -133,9 +133,9 @@ public class Main {
         post("/lisaam", (req, res) -> {
             String nimi = req.queryParams("nimi");
             Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
-            if(!tark.tarkastaMuistettava(nimi)) {
-                res.redirect("/kayttaja/" + kirj.getId());
-            }
+            /*if(!tark.tarkastaMuistettava(nimi)) {
+            res.redirect("/kayttaja/" + kirj.getId());
+            }*/
             String kuvaus = req.queryParams("kuvaus");
             
             md.lisaa(kirj.getId(), nimi, kuvaus);
