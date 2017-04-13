@@ -143,6 +143,7 @@ public class Main {
 
         //Muistettavan "Poista" -napille ei valmis
         post("/poista", (req, res) -> {
+            System.out.println(req.queryParams("id"));
             int mId = Integer.parseInt(req.queryParams("id"));
             md.delete(mId);
 
