@@ -95,8 +95,7 @@ public class Main {
         get("/kayttaja/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
-            int kayttajaid = kirj.getId();
-            //int kayttajaid = Integer.parseInt(req.params(":id"))+1;
+            int kayttajaid = Integer.parseInt(req.params(":id"))+1;
             Kayttaja k = kd.findOne(kayttajaid);
             System.out.println(k.toString());
             map.put("kayttaja", k.getNimi());
