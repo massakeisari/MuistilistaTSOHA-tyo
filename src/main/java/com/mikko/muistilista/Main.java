@@ -42,7 +42,6 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         //Listasivu
-        //TODO - jos ei kirjautunut, ohjaa kirjautumissivulle
         get("/lista", (req, res) -> {
             HashMap map = new HashMap<>();
 
@@ -110,8 +109,6 @@ public class Main {
         }, new ThymeleafTemplateEngine());
 
         //Rekisteröinti lomakkeella
-        //TODO - Vääränlaisen nimen syöttämisen redirectauksen jälkeen
-        //ilmoitus asiasta
         post("/rek", (req, res) -> {
             String nimi = req.queryParams("nimi");
             if (!tark.tarkastaNimi(nimi)) {
@@ -131,9 +128,7 @@ public class Main {
             return "";
         });
 
-        //TODO - Muistettavan lisäys tietokantaan lomakkeella
-        //TODO - Vääränlaisen nimen syöttämisen redirectauksen jälkeen
-        //ilmoitus asiasta
+        //Muistettavan lisäys tietokantaan lomakkeella
         post("/lisaam", (req, res) -> {
             String nimi = req.queryParams("nimi");
             Kayttaja kirj = (Kayttaja) req.session().attribute("kirj");
