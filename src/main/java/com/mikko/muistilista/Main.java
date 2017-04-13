@@ -115,9 +115,14 @@ public class Main {
         post("/rek", (req, res) -> {
             String nimi = req.queryParams("nimi");
             if (!tark.tarkastaNimi(nimi)) {
-                res.redirect("/rekisterointi");
+                res.redirect("/virhe/" + "1");
             }
+
             String salasana = req.queryParams("salasana");
+            if (!tark.tarkastaNimi(nimi)) {
+                res.redirect("/virhe/" + "2");
+            }
+
             kd.lisaaKayttaja(nimi, salasana);
 
             res.redirect("/kirjautuminen");
@@ -131,7 +136,7 @@ public class Main {
             String nimi = req.queryParams("nimi");
             Kayttaja kirj = (Kayttaja) req.session().attribute("kirj");
             if (!tark.tarkastaMuistettava(nimi)) {
-                res.redirect("/kayttaja/" + kirj.getId());
+                res.redirect("/virhe/" + "3");
             }
             String kuvaus = req.queryParams("kuvaus");
 
@@ -156,6 +161,24 @@ public class Main {
             HashMap map = new HashMap<>();
 
             return new ModelAndView(map, "lisaamuistettava");
+        }, new ThymeleafTemplateEngine());
+        
+        get("/virhe/:v", (req, res) -> {
+           HashMap map = new HashMap<>();
+           String v1 = "Nimessä on oltava 1-30 merkkiä";
+           String v2 = "Salasanassa on oltava 1-30 merkkiä";
+           String v3 = "Lisättävän kohteen nimi on oltava 1-50 merkkiä";
+           
+           int i = Integer.parseInt(req.params(":v"));
+           if(i==1) {
+               map.put("virhe", v1);
+           } else if(i==2) {
+               map.put("virhe", v2);
+           } else {
+               map.put("virhe", v3);
+           }
+           
+           return new ModelAndView(map, "virhe");
         }, new ThymeleafTemplateEngine());
     }
 }
