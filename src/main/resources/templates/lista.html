@@ -16,16 +16,12 @@
         </ul>
         
 
-        <table>
-            <tr>
-                <td>Ensimmäinen muistettava asia</td>
-                <td><form action="/poista" method="POST"></form><input type="submit" value="Poista"></input></td>
-            </tr>
-            <tr>
-                <td>Toinen muistettava asia</td>
-                <td><form action="/poista" method="POST"></form><input type="submit" value="Poista"></input></td>
-            </tr>
-        </table>
+        <ul>
+            <li th:each="muistettava: ${muistettavat}">
+                <span th:text="${muistettava.nimi}">1</span><span th:text="${muistettava.kuvaus}">Kuvaus tähän</span>
+                <form action="/poista" method="POST"></form><input type="submit" value="Poista"></input>
+            </li>
+        </ul>
 
         <a href="/lisaamuistettava">Lisää muistettava</a>
         <p style="float:left">Tässä on valitun tehtävän yksityiskohtia tai tarkempi kuvaus</p>
