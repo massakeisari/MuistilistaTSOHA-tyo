@@ -36,6 +36,9 @@ public class KayttajaDao implements Dao<Kayttaja, Integer>{
         if(k.isEmpty()) {
             return null;
         }
+        for(int i=0; i<k.size(); i++) {
+            System.out.println(k.get(i));
+        }
         return k.get(0);
     }
     
