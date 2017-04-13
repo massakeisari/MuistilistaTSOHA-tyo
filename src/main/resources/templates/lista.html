@@ -3,7 +3,7 @@
     <head>
         <title>Muistilista</title>
         <meta charset="UTF-8"/>
-        
+
 
     </head>
 
@@ -14,20 +14,22 @@
             <li><a href="/lista">Muistilista</a></li>
             <li style="float:right"><a href="/kirjautuminen">Kirjaudu</a></li>
         </ul>
-        
+
 
         <ul>
             <li th:each="muistettava: ${muistettavat}">
-                <span th:text="${muistettava.nimi}">1</span><span th:text="${muistettava.kuvaus}">Kuvaus tähän</span>
-                <form action="/poista" method="POST"></form><input type="submit" value="Poista"></input>
+                <span th:text="${muistettava.nimi}">1</span> <span th:text="${muistettava.kuvaus}">Kuvaus tähän</span>
+
+                <form action="/poista" method="POST">
+                    <input type="hidden" th:field="${muistettava.id}" value="Poista"></input>
+                </form>
                 <form action="/muokkaa" method="POST"></form><input type="submit" value="Muokkaa"></input>
             </li>
         </ul>
 
         <a href="/lisaamuistettava">Lisää muistettava</a>
         <p style="float:left">Tässä on valitun tehtävän yksityiskohtia tai tarkempi kuvaus</p>
-        <!-- <a th:href="/lisaa"></a> -->
-        
+
         <div>
             <h2 th:text="${kayttaja}">Kayttajan nimi tähän</h2>
         </div>
