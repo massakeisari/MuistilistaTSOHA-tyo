@@ -153,5 +153,11 @@ public class Main {
             res.redirect("/kayttaja/" + k.getId());
             return "";
         });
+        
+        get("/lisaamuistettava", (req, res) -> {
+           HashMap map = new HashMap<>();
+           
+           return new ModelAndView(map, "lisaamuistettava");
+        }, new ThymeleafTemplateEngine());
     }
 }
