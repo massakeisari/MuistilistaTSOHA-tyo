@@ -35,4 +35,12 @@ public class Muistettava {
     public String getKuvaus() {
         return this.kuvaus;
     }
+    
+    public void tehty() {
+        this.tehty = true;
+    }
+    
+    public void eiTehty() {
+        this.tehty = false;
+    }
 }

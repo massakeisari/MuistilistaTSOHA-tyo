@@ -4,6 +4,7 @@ import com.mikko.muistilista.database.Database;
 import com.mikko.muistilista.database.KayttajaDao;
 import com.mikko.muistilista.database.MuistettavaDao;
 import com.mikko.muistilista.domain.Kayttaja;
+import com.mikko.muistilista.domain.Tarkastaja;
 import java.net.URI;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
@@ -33,6 +34,7 @@ public class Main {
         database.setDebugMode(true);
         KayttajaDao kd = new KayttajaDao(database);
         MuistettavaDao md = new MuistettavaDao(database);
+        Tarkastaja tark = new Tarkastaja();
         
         //Etusivu
         get("/", (req, res) -> {
@@ -109,8 +111,13 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         //Rekisteröinti lomakkeella
+        //TODO - Vääränlaisen nimen syöttämisen redirectauksen jälkeen
+        //ilmoitus asiasta
         post("/rek", (req, res) -> {
             String nimi = req.queryParams("nimi");
+            if(!tark.tarkastaNimi(nimi)) {
+                res.redirect("/rekisterointi");
+            }
             String salasana = req.queryParams("salasana");
             kd.lisaaKayttaja(nimi, salasana);
             
@@ -121,14 +128,17 @@ public class Main {
         
         
         //TODO - Muistettavan lisäys tietokantaan lomakkeella
+        //TODO - Vääränlaisen nimen syöttämisen redirectauksen jälkeen
+        //ilmoitus asiasta
         post("/lisaam", (req, res) -> {
             String nimi = req.queryParams("nimi");
-            String kuvaus = req.queryParams("kuvaus");
             Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
+            if(!tark.tarkastaMuistettava(nimi)) {
+                res.redirect("/kayttaja/" + kirj.getId());
+            }
+            String kuvaus = req.queryParams("kuvaus");
             
             md.lisaa(kirj.getId(), nimi, kuvaus);
-            
-            
             
             res.redirect("/kayttaja/" + kirj.getId());
             return "";
