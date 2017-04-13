@@ -19,7 +19,7 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
     public void lisaa(int kId, String nimi, String kuvaus) throws SQLException{
         Connection c = db.getConnection();
         PreparedStatement stmt = c.prepareStatement("INSERT INTO Muistettava(kayttaja_id, nimi, kuvaus) VALUES"
-                + "(?, ?, ?)");
+                + " (?, ?, ?)");
         stmt.setInt(1, kId);
         stmt.setString(2, nimi);
         stmt.setString(3, kuvaus);
