@@ -39,7 +39,7 @@ public class MuistettavaDao implements Dao<Muistettava, Integer>{
         
         while(rs.next()) {
             Integer id = rs.getInt("id");
-            Integer kayttajaId = rs.getInt("kayttajaId");
+            Integer kayttajaId = rs.getInt("kayttaja_id");
             String nimi = rs.getString("nimi");
             String kuvaus = rs.getString("kuvaus");
             
