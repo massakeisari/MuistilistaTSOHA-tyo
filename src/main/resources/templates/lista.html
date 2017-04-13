@@ -20,7 +20,7 @@
             <li th:each="muistettava: ${muistettavat}">
                 <span th:text="${muistettava.nimi}">1</span> <span th:text="${muistettava.kuvaus}">Kuvaus tähän</span>
 
-                <form th:action="/poista" th:object="${muistettava}" method="POST">
+                <form action="/poista" th:object="${muistettava}" method="POST">
                     <input type="hidden" th:field="${id}"></input>
                     <button type="submit">Poista</button>
                 </form>
