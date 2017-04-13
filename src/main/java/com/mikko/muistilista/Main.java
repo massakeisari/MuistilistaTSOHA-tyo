@@ -94,7 +94,9 @@ public class Main {
         //Kirjautuneen käyttäjän oma lista
         get("/kayttaja/:id", (req, res) -> {
             HashMap map = new HashMap<>();
-            int kayttajaid = Integer.parseInt(req.params(":id"))+1;
+            Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
+            int kayttajaid = kirj.getId();
+            //int kayttajaid = Integer.parseInt(req.params(":id"))+1;
             Kayttaja k = kd.findOne(kayttajaid);
             System.out.println(k.toString());
             map.put("kayttaja", k.getNimi());
@@ -133,9 +135,9 @@ public class Main {
         post("/lisaam", (req, res) -> {
             String nimi = req.queryParams("nimi");
             Kayttaja kirj = (Kayttaja)req.session().attribute("kirj");
-            /*if(!tark.tarkastaMuistettava(nimi)) {
-            res.redirect("/kayttaja/" + kirj.getId());
-            }*/
+            if(!tark.tarkastaMuistettava(nimi)) {
+                res.redirect("/kayttaja/" + kirj.getId());
+            }
             String kuvaus = req.queryParams("kuvaus");
             
             md.lisaa(kirj.getId(), nimi, kuvaus);
