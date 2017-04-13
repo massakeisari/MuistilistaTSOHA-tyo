@@ -21,7 +21,7 @@
                 <span th:text="${muistettava.nimi}">1</span> <span th:text="${muistettava.kuvaus}">Kuvaus tähän</span>
 
                 <form action="/poista" th:object="${muistettava}" method="POST">
-                    <input type="hidden" th:field="${id}" value="id"></input>
+                    <input type="hidden" th:field="${muistettava.id}" value="id"></input>
                     <button type="submit">Poista</button>
                 </form>
                 <form action="/muokkaa" method="POST"></form><input type="submit" value="Muokkaa"></input>
