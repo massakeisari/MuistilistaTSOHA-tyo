@@ -161,6 +161,7 @@ public class Main {
             return new ModelAndView(map, "lisaamuistettava");
         }, new ThymeleafTemplateEngine());
         
+        //Ohjaa virheellisten syötteiden tapahtuessa ilmoitus sivulle.
         get("/virhe/:v", (req, res) -> {
            HashMap map = new HashMap<>();
            String v1 = "Nimessä on oltava 1-30 merkkiä";
