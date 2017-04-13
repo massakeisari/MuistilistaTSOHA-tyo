@@ -6,6 +6,7 @@ public class Kayttaja {
     private String salasana;
     
     public Kayttaja(int id, String nimi, String salasana) {
+        this.id = id;
         this.nimi = nimi;
         this.salasana = salasana;
     }
