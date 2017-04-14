@@ -66,6 +66,7 @@ public class KayttajaDao implements Dao<Kayttaja, Integer>{
 
             kayttajat.add(new Kayttaja(id, nimi, salasana));
         }
+        rs.close();
         stmt.close();
         conn.close();
         
